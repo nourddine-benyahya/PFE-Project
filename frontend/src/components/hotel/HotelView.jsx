@@ -4,12 +4,25 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
 import HotelReserve from "./HotelReserve";
+import queryString from 'query-string';
+
 
 const HotelView = () => {
 
   const [data, setData] = useState([]);
   const location = useLocation();
   const date= location.state;
+  // const {date, startDate, endDate, numberOfPeople } = location.state;
+  const queryParams = queryString.parse(location.search);
+
+  // Access the query parameters
+  const startDate = queryParams.startDate;
+  const endDate = queryParams.endDate;
+  const numberOfPeople = queryParams.numberOfPeople;
+  
+  // Use the retrieved query parameters as needed
+  console.log(startDate, endDate, numberOfPeople,'ggg');
+
  
   console.log(date)
   const { id } = useParams();
@@ -18,8 +31,9 @@ const HotelView = () => {
   const [open, setOpen] = useState(false);
   const [openBook,setOpenBook]=useState(false);
 
-  const checkInDate = new Date(date.checkInDate);
-const checkOutDate = new Date(date.checkOutDate);
+  const checkInDate = new Date(startDate); // Set the desired check-in date
+  const checkOutDate = new Date(endDate); // Set the desired check-out date
+  
  console.log(user)
  
 
@@ -37,18 +51,24 @@ const checkOutDate = new Date(date.checkOutDate);
 
   
 
+
+
+
+
   useEffect(() => {
     axios
       .get(`/hotels/find/${id}`)
       .then((response) => {
         setData(response.data);
-        console.log(data.HotelImg);
-      
+        console.log(response.data.HotelImg); // Use response.data instead of data
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+  console.log(date)
+  const checkInDateString = checkInDate.toLocaleDateString();
+  const checkOutDateString = checkOutDate.toLocaleDateString();
 
   const handleClick = () => {
     if(user){{setOpenBook(true)}
@@ -91,13 +111,17 @@ const checkOutDate = new Date(date.checkOutDate);
             <div className="flex flex-col md:flex-row">
               <div className="flex items-center">
                 <h1 className="font-bold">checkIn Date :</h1>
-                <h1 className="px-4">{date.checkInDate}</h1>
+                <h1 className="px-4">{checkInDateString}</h1>
               </div>
 
               <div className="flex items-center lg:px-8">
                 <h1 className="font-bold">checkout Date</h1>
-                <h1 className="px-4">{date.checkOutDate}</h1>
+                <h1 className="px-4">{checkOutDateString}</h1>
               </div>
+            </div>
+            <div className="flex items-center">
+              <h1 className="font-bold py-5">Number Of Person : </h1>
+              <h1 className="px-4">{numberOfPeople}</h1>
             </div>
 
             <div className="flex flex-col md:flex-row py-4">
@@ -116,7 +140,7 @@ const checkOutDate = new Date(date.checkOutDate);
             <div className="flex flex-col md:flex-row  py-4 justify-between lg:items-center">
               <div className="flex items-center">
                 <h1 className="font-bold text-2xl">
-                  Book a stay over Rs.{data.cheapestPrice *day_difference}
+                  Book a stay over MAD.{data.cheapestPrice *day_difference}
                 </h1>
                 <h1 className="ml-3 md:text-1xl">/for {day_difference} days</h1>
               </div>
@@ -144,7 +168,7 @@ const checkOutDate = new Date(date.checkOutDate);
       />
     ))}
 </div>
-      { openBook &&  <HotelReserve setOpen={setOpenBook} hotelId={id} checkInDate={date.checkInDate} checkOutDate={date.checkOutDate} date_difference={day_difference}/>}
+      { openBook &&  <HotelReserve setOpen={setOpenBook} hotelId={id} checkInDate={checkInDate} checkOutDate={checkOutDate} date_difference={day_difference}/>}
 
     </div>
   );

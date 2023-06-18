@@ -24,6 +24,9 @@ const hotelReservationModel=new mongoose.Schema({
     totalDays:{
         type:Number,
         reqiured:true
+    },
+    NbOfPer:{
+        type:Number,
     }
     
     

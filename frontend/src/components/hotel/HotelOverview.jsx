@@ -2,9 +2,16 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import queryString from 'query-string';
 
-const HotelOverview = () => {
+
+const HotelOverview = (props) => {
   const [data, setData] = useState([]);
+  const [startDate, setStartDate] = useState();
+  const [EndDate, setEndDate] = useState();
+  const [NbOfPer, setNbOfPer] = useState();
+  const currentDate = new Date().toISOString().split('T')[0]; // Get current date in yyyy-mm-dd format
+  const tomorrowDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000).toISOString().split('T')[0]; //get tomorrow date
 
   const { id } = useParams();
 
@@ -20,6 +27,15 @@ const HotelOverview = () => {
       });
   }, []);
 
+  const queryParams = queryString.stringify({
+    startDate: startDate,
+    endDate: EndDate,
+    numberOfPeople: NbOfPer
+  });
+
+
+
+  
   return (
     <div>
       <div className="lg:p-24 ">
@@ -67,8 +83,57 @@ const HotelOverview = () => {
                   Book a stay over Rs.{data.cheapestPrice}
                 </h1>
                 <h1 className="ml-3 md:text-1xl">/per day</h1>
+               
               </div>
+
             </div>
+
+            <div className="flex flex-col">
+          <label for="checkInDate" className="py-3 ml-5">
+            Check-In Date
+          </label>
+          <input
+            type="date"
+            min={currentDate} 
+            className="border rounded-md p-3 w-full"
+            onChange={(e)=> setStartDate(e.target.value)}
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <label for="returnDate" className="py-3 ml-5">
+            Check-Out Date
+          </label>
+          <input type="date" className="border rounded-md p-3 w-full"
+          min={tomorrowDate}
+          onChange={(e)=> setEndDate(e.target.value)} />
+        </div>
+
+        <div className="flex flex-col ">
+          <label for="NbForPer" className="py-3 ml-5">
+            Number Of Person
+          </label>
+          <input
+            type="number"
+            className="border rounded-md  p-3 lg:w-[300px] w-full"
+            placeholder='03'
+            onChange={(e) => setNbOfPer(e.target.value)}
+          ></input>
+        </div>
+<br /><br />
+
+<Link to={`/hotelview/${data._id}?${queryParams}`}>
+  {NbOfPer !== '' && startDate !== '' && EndDate !== '' ? (
+    <button className="bg-blue-700 text-white font-bold px-3 py-1 rounded mr-2" type="button">
+      Reserve now
+    </button>
+  ) : (
+    <button disabled className="bg-gray-400 text-white font-bold px-3 py-1 rounded mr-2" type="button">
+      Reserve now
+    </button>
+  )}
+</Link>
+
             
           </div>
         </div>

@@ -117,7 +117,6 @@ const HotelReserve = ({setOpen,hotelId,checkInDate,checkOutDate,date_difference}
      
   }
 
-  
 
   const handleClick = async () => {
     try {
@@ -135,7 +134,7 @@ const HotelReserve = ({setOpen,hotelId,checkInDate,checkOutDate,date_difference}
       navigate("/hotelhome");
     } catch (err) {}
   };
-
+console.log(data)
   return (
     <div class="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 z-50 flex justify-center items-center">
   <div class="bg-white rounded-md p-8 max-w-md w-full h-[600px] overflow-y-auto">
