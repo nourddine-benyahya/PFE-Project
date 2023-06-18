@@ -82,6 +82,10 @@ import { SalaryCalculation } from "../pages/SalaryCalculation";
 import { EmployeeList } from "../pages/EmployeeList";
 import { SalarySheet } from "../pages/SalarySheet";
 import { FinanceHealth } from "../pages/FinanceHealth";
+import { MainHotel } from "../components/hotelowner/main";
+import { Properties } from "../components/hotelowner/properties";
+import { Addpropertie } from "../components/hotelowner/addpropertie";
+import { Reservations } from "../components/hotelowner/reservations";
 
 const RouteTour = () => {
   const ProtectedRoute = ({ children }) => {
@@ -263,6 +267,10 @@ const RouteTour = () => {
       {<Route path="/finance/refund" element={<Refund />} />}
       {<Route path="finance/addRefund" element={<RefundReq />} />}
       {<Route path="finance/updateRefund/:id" element={<RefundUpdate />} />}
+      <Route path="/manage/hotel/" element={<MainHotel />} />
+      <Route path="manage/hotel/properties" element={<Properties />} />
+      <Route path="manage/hotel/Addproperty" element={<Addpropertie />} />
+      <Route path="manage/hotel/Reservations" element={<Reservations />} />
     </Routes>
   );
 };

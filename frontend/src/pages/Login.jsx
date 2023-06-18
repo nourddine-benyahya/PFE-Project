@@ -42,7 +42,12 @@ const Login = () => {
         navigate("/admin");
       } else if (res.data.details.type == "financeManager") {
         navigate("/finance");
-      } else if (res.data.isAdmin === false) {
+      
+      } 
+      else if (res.data.details.type== "hotelowner"){
+        navigate('/manage/hotel')
+      }
+      else if (res.data.isAdmin === false) {
         navigate("/");
       }
     } catch (err) {
