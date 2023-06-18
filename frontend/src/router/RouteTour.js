@@ -254,6 +254,7 @@ const RouteTour = () => {
       <Route path="/hoteladmin" element={<HadminView />} />
       <Route path="/hotelreserve/:id" element={<HotelReserve />} />
       <Route path="/hotelbooking" element={<HotelBook />} />
+      <Route path="/hotelview/:id" element={<HotelView />} />
 
       {/* Navindi */}
       <Route path="/addrestaurants" element={<RestaurentForm />} />

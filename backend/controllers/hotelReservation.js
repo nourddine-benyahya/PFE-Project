@@ -8,7 +8,8 @@ const hotelReservation = require("../models/hotelReservationModel");
         checkOutDate,
         userName,
         totalPrice,
-        totalDays
+        totalDays,
+        NbOfPer
     }= req.body
 
     try{
@@ -18,7 +19,8 @@ const hotelReservation = require("../models/hotelReservationModel");
             checkOutDate,
             userName,
             totalPrice,
-            totalDays
+            totalDays,
+            NbOfPer
         });
         const savedReservation = await newReservation.save();
         res.status(200).json(savedReservation);

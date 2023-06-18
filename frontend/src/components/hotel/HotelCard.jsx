@@ -36,6 +36,12 @@ const HotelCard = () => {
                       View
                     </button>
                     </Link>
+
+                    <Link to ={`/hotelview/${item._id}`}>
+                    <button className="bg-blue-700 text-white font-bold px-3 py-1 rounded mr-2" type="button">
+                      Reserve now
+                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>

@@ -26,6 +26,9 @@ const hotelReservationModel=new mongoose.Schema({
         reqiured:true
     },
     status : Boolean 
+    NbOfPer:{
+        type:Number,
+    }
     
     
    
