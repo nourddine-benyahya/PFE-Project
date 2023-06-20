@@ -1,6 +1,8 @@
 const Reservation = require("../models/VehicleReservation");
 const Vehicle = require("../models/Vehicle");
 const { v4: uuidv4 } = require("uuid");
+var nodemailer=require('nodemailer')
+
 
 exports.addReservation = async (req, res) => {
   //tested in postman - working well
@@ -41,6 +43,63 @@ exports.addReservation = async (req, res) => {
 
     await newReservation.save();
     res.status(200).json(newReservation);
+
+
+
+    var transporter=nodemailer.createTransport({
+      host:'smtp.gmail.com',
+      port: 465,
+      auth:{
+          user:'elghazi.mohamed.ilyass@gmail.com',
+          pass:"gmbjqsmnihhroizt"
+      }
+  })
+
+
+  var mailoption={
+      from:'elghazi.mohamed.ilyass@gmail.com',
+      to:'nourddine.benyahya02@gmail.com',
+      subject:'Thank you for your order',
+      text: `Dear ${req.body.userId},\n` +
+              `Thank you for choosing our service and placing an order with us. We are thrilled to serve you! Here are the details of your order:\n` +
+              `user Name: ${req.body.userId}\n` +
+              `vehicle Number: ${vehicle.vehicleNumber}\n` +
+              `date: ${new Date()}\n` +
+              `location: ${vehicle.location}\n` +
+              `pickupDate: ${req.body.pickupDate}\n` +
+              `returnDate: ${req.body.returnDate}\n` +
+              `amount: ${amount}\n` +
+              `needDriver: ${req.body.needDriver}\n` +
+              `transactionId: ${uuidv4()}\n` +
+              `We will begin processing your order immediately. You will receive a confirmation email once your order is shipped.\n` +
+              `\n` +
+              `If you have any questions or need further assistance, please don't hesitate to contact our customer support team at [wa.7assaan@gmail.com] .\n` +
+              `\n` +
+              `Thank you again for your trust and support. We look forward to serving you.\n` +
+              `\n` +
+              `Best regards,\n` +
+              `wa7assssaan`
+
+  }
+  transporter.sendMail(mailoption,function(error,info){
+      if(error){
+          console.log("error")
+      }else{
+          console.log('email sent :' + info.response)
+      }
+  })
+
+
+
+
+
+
+
+
+
+
+
+
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: err.message });

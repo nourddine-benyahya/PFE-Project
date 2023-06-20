@@ -4,8 +4,9 @@ import Swal from 'sweetalert2'
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useNavigate,useLocation } from "react-router-dom";
+import Sidebar from "../Sidebar";
 
-const VehicleBook = () => {
+const VehicleManageView = () => {
   const { state } = useLocation();
 
   console.log(state)
@@ -31,16 +32,16 @@ const VehicleBook = () => {
 
   const deleteHandler = () => {
     axios
-      .delete(`/vehicle/${state._id}`)
+      .delete(`http://localhost:5000/api/vehicle/${state._id}`)
       .then(() => {
         Swal.fire({
-          
+
           icon: "success",
           title: "Your Vehicle Deleted Successfully",
           showConfirmButton: false,
           timer: 2000,
           
-        }); navigate('/vehicle')
+        }); navigate('vehicle/manage/properties')
       })
       .catch((err) => {
         Swal.fire({
@@ -53,7 +54,7 @@ const VehicleBook = () => {
   };
 
   const editHandler = () => {
-    navigate(`/vehicle/edit/${state._id}`, {state : data});
+    navigate(`/vehicle/EditManageVehicle/edit/${state._id}`, {state : data});
 
     // axios
     //   .patch(`/vehicle/${state._id}`)
@@ -116,4 +117,4 @@ const VehicleBook = () => {
   );
 };
 
-export default VehicleBook;
+export default VehicleManageView;
