@@ -89,6 +89,12 @@ import { Reservations } from "../components/hotelowner/reservations";
 import HoteladminView from "../components/hotelowner/hotel/HadminView";
 import { AddRoomAdmin } from "../components/hotelowner/hotel/AddRoom";
 import UpdateHoteladmin from "../components/hotelowner/hotel/UpdateHotel";
+import { MainVehicle } from "../components/VehicleOwner/MainVehicle";
+import { PropertiesVehicle } from "../components/VehicleOwner/PropertiesVehicle";
+import { ReservationVehicle } from "../components/VehicleOwner/ReservationVehicle";
+import VehicleManageView from "../components/VehicleOwner/vehicle/VehicleManageView";
+import EditManageVehicle from "../components/VehicleOwner/vehicle/EditManageVehicle";
+import AddManageVehicle from "../components/VehicleOwner/vehicle/AddManageVehicle";
 
 const RouteTour = () => {
   const ProtectedRoute = ({ children }) => {
@@ -276,6 +282,15 @@ const RouteTour = () => {
       <Route path="manage/hotel/Addproperty" element={<Addpropertie />} />
       <Route path="manage/hotel/Reservations" element={<Reservations />} />
       <Route path="manage/hotel/view" element={<HoteladminView />} />
+      
+      <Route path="/manage/vehicle" element={<MainVehicle />} />
+      <Route path="/vehicle/manage/properties" element={<PropertiesVehicle />} />
+      <Route path="/vehicle/manage/reservation" element={<ReservationVehicle />} />
+      <Route path="/vehicle/manage/view/" element={<VehicleManageView />} />
+      <Route path="/vehicle/EditManageVehicle/edit/:id" element={<EditManageVehicle />} />
+      <Route path="/vehicle/AddManageVehicle/add" element={<AddManageVehicle />} />
+
+
     </Routes>
   );
 };

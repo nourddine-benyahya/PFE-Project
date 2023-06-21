@@ -109,7 +109,6 @@ export const Reservations = () => {
       <th className="py-3 px-4">Client</th>
       <th className="py-3 px-4">Price</th>
       <th className="py-3 px-4">Days</th>
-      <th className="py-3 px-4">Status</th>
     </tr>
   </thead>
   <tbody>
@@ -122,9 +121,7 @@ export const Reservations = () => {
         <td className="py-4 px-4">{reservation.userName}</td>
         <td className="py-4 px-4">{reservation.totalPrice}</td>
         <td className="py-4 px-4">{reservation.totalDays}</td>
-        <td className={`py-4 px-4 ${getStatusColor(reservation.status)}`}>
-          {reservation.status ? 'Confirmed' : 'Pending'}
-        </td>
+      
       </tr>
     ))}
   </tbody>

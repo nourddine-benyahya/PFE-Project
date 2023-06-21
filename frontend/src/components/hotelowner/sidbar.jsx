@@ -36,10 +36,7 @@ const Sidebarhotel = () => {
            <FaCalculator color='#636363'/>
           <p>reservations</p>
         </Link>
-        <Link  to="/finance/employee"className='flex items-center gap-[15px] py-[20px] border-b-[1px] border-[#FFFFFF]/[1]'>
-           <FaListUl color='#636363'/>
-          <p>reservations request</p>
-        </Link>
+        
         
 
         

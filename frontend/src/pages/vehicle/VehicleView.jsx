@@ -88,7 +88,7 @@ const VehicleBook = () => {
             </div>
 
             <div className="flex items-center">
-              <h1 className="font-bold text-2xl">Rs.{state.price}</h1>
+              <h1 className="font-bold text-2xl">MAD.{state.price}</h1>
               <h1 className="md:text-1xl">/per day</h1>
             </div>
           </div>

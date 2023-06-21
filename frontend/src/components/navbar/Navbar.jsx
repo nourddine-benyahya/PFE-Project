@@ -59,7 +59,7 @@ const Navbar = () => {
   return (
     <nav className="flex justify-around w-full py-4 bg-gray-50 sticky top-0 z-[999]">
       <div className="flex items-center">
-        <h3 className="text-2xl font-bold text-[#41A4FF]">Travely</h3>
+        <h3 className="text-2xl font-bold text-[#41A4FF]">{user && user.type}</h3>
       </div>
       {/* <!-- left header section --> */}
       <div className="items-center hidden space-x-5 md:flex">
@@ -118,7 +118,7 @@ const Navbar = () => {
               <div>
                 <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                   {/* {user.name} */}
-                  <img class="h-8 w-8 rounded-full" src={user.img} alt=""></img>
+                  <img class="h-8 w-8 rounded-full" src={user && user.img} alt=""></img>
                 </Menu.Button>
               </div>
 

@@ -1,0 +1,47 @@
+version: '3.8'
+services:
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - vdata:/data/db
+  
+  hotel_service:
+    build: ./backend/hotel-service/
+    ports:
+      - 5000:5000
+    depends_on:
+      - mongo
+    restart: always
+  vehicule_service:
+    build: ./backend/vehicule-service/
+    ports:
+      - 5001:5000
+    depends_on:
+      - mongo
+    restart: always
+  auth_service:
+    build: ./backend/auth-service/
+    ports:
+      - 5002:5000
+    depends_on:
+      - mongo
+    restart: always
+  restau_service:
+    build: ./backend/restaurant-service/
+    ports:
+      - 5003:5000
+    depends_on:
+      - mongo
+    restart: always
+  frontend:
+    build: ./frontend/
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongo
+    restart: always
+  
+volumes:
+  vdata:
