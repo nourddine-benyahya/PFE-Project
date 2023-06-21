@@ -5,6 +5,7 @@ WORKDIR /app
 COPY . .
 
 RUN npm install
+RUN npm install body-parser
 
 EXPOSE 3000
 

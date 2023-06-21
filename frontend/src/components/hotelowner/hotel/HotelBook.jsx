@@ -34,16 +34,16 @@ const HotelBook = () => {
 
                                         <div className='flex gap-28'>
                                             <p>Hotel fee</p>
-                                            <p className='ml-auto'>Rs.4000.00</p>
+                                            <p className='ml-auto'>MAD.4000.00</p>
                                         </div>
 
                                         <div className='flex gap-28 border-b py-2'>
                                             <p>Room fee</p>
-                                            <p className='ml-auto'>Rs.0.00</p>
+                                            <p className='ml-auto'>MAD.0.00</p>
                                         </div>
                                         <div className='flex items-center'>
                                             <p className='font-bold py-2'>Total</p>
-                                            <p className='ml-auto'>Rs. 40000.00</p>
+                                            <p className='ml-auto'>MAD. 40000.00</p>
                                         </div>
                    </div>
                       <button className='bg-[#41A4FF] rounded-lg text-white p-2 w-full'>Confirm and Pay Now</button>

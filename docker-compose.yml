@@ -10,28 +10,28 @@ services:
   hotel_service:
     build: ./backend/hotel-service/
     ports:
-      - 5000:5000
+      - 5004:5020
     depends_on:
       - mongo
     restart: always
   vehicule_service:
     build: ./backend/vehicule-service/
     ports:
-      - 5001:5000
+      - 5001:5020
     depends_on:
       - mongo
     restart: always
   auth_service:
     build: ./backend/auth-service/
     ports:
-      - 5002:5000
+      - 5002:5020
     depends_on:
       - mongo
     restart: always
   restau_service:
     build: ./backend/restaurant-service/
     ports:
-      - 5003:5000
+      - 5003:5020
     depends_on:
       - mongo
     restart: always

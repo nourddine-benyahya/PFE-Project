@@ -39,7 +39,7 @@ const SearchCard = (item) => {
                   </h2>
                   <p className="font-light text-gray-500 mb-2">{item.city}</p>
                   <p className="font-medium text-gray-900 mb-2">
-                    Starting from Rs.{item.cheapestPrice}
+                    Starting from MAD.{item.cheapestPrice}
                   </p>
                   <div className="flex items-center">
                   

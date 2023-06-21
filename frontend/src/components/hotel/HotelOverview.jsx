@@ -80,7 +80,7 @@ const HotelOverview = (props) => {
             <div className="flex flex-col md:flex-row  py-4 justify-between lg:items-center">
               <div className="flex items-center">
                 <h1 className="font-bold text-2xl">
-                  Book a stay over Rs.{data.cheapestPrice}
+                  Book a stay over MAD.{data.cheapestPrice}
                 </h1>
                 <h1 className="ml-3 md:text-1xl">/per day</h1>
                
