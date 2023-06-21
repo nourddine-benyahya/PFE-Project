@@ -164,9 +164,6 @@ export const PropertiesVehicle = () => {
   </thead> 
 
 
-
-
-
   <tbody>
     {
     vehicles.map((vehicle) => (
