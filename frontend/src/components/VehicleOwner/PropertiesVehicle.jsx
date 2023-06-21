@@ -151,7 +151,7 @@ export const PropertiesVehicle = () => {
   <thead className="bg-indigo-500 text-white">
     <tr>
       <th className="py-3 px-4">image</th>
-      <th className="py-3 px-4">ID</th>
+      <th className="py-3 px-4">id</th>
       <th className="py-3 px-4">Brand</th>
       <th className="py-3 px-4">Model</th>
       <th className="py-3 px-4">Owner Name</th>
