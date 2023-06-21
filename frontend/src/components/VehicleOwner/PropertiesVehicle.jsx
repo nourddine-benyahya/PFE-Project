@@ -165,6 +165,9 @@ export const PropertiesVehicle = () => {
 
 
 
+
+
+
   <tbody>
     {
     vehicles.map((vehicle) => (
