@@ -161,7 +161,8 @@ export const PropertiesVehicle = () => {
       <th className="py-3 px-4">location</th>
       <th className="py-3 px-4">Action</th>
     </tr>
-  </thead>
+  </thead> 
+  
   <tbody>
     {
     vehicles.map((vehicle) => (
