@@ -86,6 +86,9 @@ import { MainHotel } from "../components/hotelowner/main";
 import { Properties } from "../components/hotelowner/properties";
 import { Addpropertie } from "../components/hotelowner/addpropertie";
 import { Reservations } from "../components/hotelowner/reservations";
+import HoteladminView from "../components/hotelowner/hotel/HadminView";
+import { AddRoomAdmin } from "../components/hotelowner/hotel/AddRoom";
+import UpdateHoteladmin from "../components/hotelowner/hotel/UpdateHotel";
 
 const RouteTour = () => {
   const ProtectedRoute = ({ children }) => {
@@ -247,8 +250,8 @@ const RouteTour = () => {
       {/* chamith */}
       <Route path="/hotelhome" element={<HotelHome />} />
       <Route path="/hotels/new" element={<AddHotel />} />
-      <Route path="/rooms/new/:id" element={<AddRoom />} />
-      <Route path="/hotels/update/:id" element={<UpdateHotel />} />
+      <Route path="/rooms/new/:id" element={<AddRoomAdmin />} />
+      <Route path="/hotels/update/:id" element={<UpdateHoteladmin />} />
       <Route path="/hotel/:id" element={<HotelView />} />
       <Route path="/hoteloverview/:id" element={<HotelOverView />} />
       <Route path="/hoteladmin" element={<HadminView />} />
@@ -272,6 +275,7 @@ const RouteTour = () => {
       <Route path="manage/hotel/properties" element={<Properties />} />
       <Route path="manage/hotel/Addproperty" element={<Addpropertie />} />
       <Route path="manage/hotel/Reservations" element={<Reservations />} />
+      <Route path="manage/hotel/view" element={<HoteladminView />} />
     </Routes>
   );
 };

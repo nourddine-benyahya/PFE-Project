@@ -3,8 +3,10 @@ import axios from "axios";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
+import Sidebarhotel from "../sidbar";
+import { DashbordView } from "../../DashbordView";
 
-const HadminView = () => {
+const HoteladminView = () => {
 
   const { state } = useLocation();
 
@@ -42,7 +44,7 @@ const HadminView = () => {
             .delete(`/hotels/${state._id}`)
             .then((res) => {
               Swal.fire("Deleted!", res.data.status, "success");
-                navigate("/hotels");
+                navigate("/manage/hotel/properties");
             })
             .catch((err) => {
               Swal.fire("Not Deleted!", err.message, "error");
@@ -54,12 +56,18 @@ const HadminView = () => {
   
 
   return (
-    <div>
+    <div className="flex">
+      <div className='basis-[18%]  border'>
+          <Sidebarhotel/>
+       </div>
+       <div className='basis-[82%] border' >
+        <DashbordView/>
+    <div style={{ width:"80%" , margin:"auto" }}>
       <div className="lg:p-24 ">
-        <h1 className="ml-18 md:ml-20 lg:ml-20 text-center lg:text-left py-5 font-bold text-3xl">
+        <h1 className="ml-18 md:ml-20 lg:ml-20 text-left lg:text-left py-5 font-bold text-3xl">
               {state.name} {data.type}
             </h1>
-        <div className="flex justify-center items-center w-full flex-col lg:flex-row pt-12 lg:pt-0">
+        <div  style={{ width:"80%" ,margin:"auto" }} className="flex justify-center items-center w-full flex-col lg:flex-row pt-12 lg:pt-0">
           <img
             src={`http://localhost:5000/api/hotels/images/${state.HotelImg}`}
             alt="Hotel Image"
@@ -167,7 +175,9 @@ const HadminView = () => {
            
 
     </div>
+    </div>
+    </div>
   );
 };
 
-export default HadminView;
+export default HoteladminView;

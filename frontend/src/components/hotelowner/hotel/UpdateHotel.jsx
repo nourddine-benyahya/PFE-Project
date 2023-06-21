@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
-import useFetch from "../../hooks/useFetch";
+import Sidebarhotel from "../sidbar";
+import { DashbordView } from "../../DashbordView";
+import useFetch from "../../../hooks/useFetch";
 
 
-export const UpdateHotel= () => {
+export const UpdateHoteladmin= () => {
 
     const navigate = useNavigate();
 const location=useLocation();
@@ -63,7 +65,7 @@ const location=useLocation();
           showConfirmButton: false,
           timer: 2000
         }) 
-        navigate(`/hotels`)
+        navigate("/manage/hotel/properties")
 
       })
       .catch((err) => {
@@ -78,6 +80,12 @@ const location=useLocation();
   }
 
   return (
+    <div className="flex">
+    <div className='basis-[18%]  border'>
+        <Sidebarhotel/>
+     </div>
+     <div className='basis-[82%] border' >
+      <DashbordView/>
     <div className="flex justify-center">
       <form
         class="w-full max-w-lg"
@@ -349,7 +357,9 @@ const location=useLocation();
         </button>
       </form>
     </div>
+    </div>
+    </div>
   );
 };
 
-export default UpdateHotel;
+export default UpdateHoteladmin;

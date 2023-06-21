@@ -44,7 +44,7 @@ const Login = () => {
         navigate("/finance");
       
       } 
-      else if (res.data.details.type== "hotelowner"){
+      else if (res.data.details.type== "hotelOwner"){
         navigate('/manage/hotel')
       }
       else if (res.data.isAdmin === false) {

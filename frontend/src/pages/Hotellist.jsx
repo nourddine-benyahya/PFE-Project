@@ -74,6 +74,8 @@ const Hotellist = ({ columns }) => {
       </div>
       <div>
         <Datatable columns={columns} />
+        {console.log(data)}
+
       </div>
     </>
   );

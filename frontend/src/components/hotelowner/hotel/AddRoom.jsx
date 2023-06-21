@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
+import Sidebarhotel from "../sidbar";
+import { DashbordView } from "../../DashbordView";
 
-export const AddRoom = () => {
+export const AddRoomAdmin = () => {
   const location = useLocation();
   const hotelID = location.pathname.split("/")[3];
 
@@ -13,7 +15,7 @@ export const AddRoom = () => {
   const [description, setDescription] = useState("");
   const [maxPeople, setMaxPeople] = useState("");
   const [roomNumbers, setRoomNumbers] = useState([]);
-
+const navigate=useNavigate()
   console.log({ hotelID });
 
   function sendData(e) {
@@ -38,7 +40,8 @@ export const AddRoom = () => {
           title: 'Room added Successfully',
           showConfirmButton: false,
           timer: 2000
-        }) 
+        })
+        navigate(-1) 
       })
       .catch((err) => {
         Swal.fire({
@@ -53,6 +56,12 @@ export const AddRoom = () => {
  
 
   return (
+    <div className="flex">
+    <div className='basis-[18%]  border'>
+        <Sidebarhotel/>
+     </div>
+     <div className='basis-[82%] border' >
+      <DashbordView/>
     <div className="flex justify-center">
       <form
         class="w-full max-w-lg"
@@ -163,6 +172,8 @@ export const AddRoom = () => {
         " type="reset" value="Reset" />
        </div>
       </form>
+    </div>
+    </div>
     </div>
   );
 };

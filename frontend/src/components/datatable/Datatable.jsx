@@ -9,21 +9,25 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 const Datatable = ({ columns }) => {
   const location = useLocation();
-  const path = location.pathname.split("/")[1];
-
+  var path = location.pathname.split("/")[1];
+  if(path==="manage"){
+    path="http://localhost:5000/api/hotels/"
+}
   const [isLoading, setIsLoading] = useState(false);
 
-  console.log(path);
 
   const [list, setList] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
   const { data } = useFetch(`${path}`);
+  console.log(path,data);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     setList(data);
+    
+
   }, [data]);
 
   const handleDelete = async (id) => {
