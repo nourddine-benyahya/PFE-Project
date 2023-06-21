@@ -163,6 +163,7 @@ export const PropertiesVehicle = () => {
     </tr>
   </thead> 
 
+
   
   <tbody>
     {
